@@ -1,11 +1,10 @@
 ﻿# -*- encoding: UTF-8 -*-
-
-$LOAD_PATH << File.dirname(__FILE__)
+require 'spec_helper'
 require 'fizz_buzz'
 
 describe Integer do
 
-  context '3の倍数でも5の倍数でもない' do
+  context '3の倍数、5の倍数でもない' do
     it 'return num' do
       1.to_fizz_buzz.should eq '1'
       2.to_fizz_buzz.should eq '2'
@@ -14,7 +13,7 @@ describe Integer do
     end
   end
 
-  context '3の倍数かつ5の倍数でない' do
+  context '3の倍数のみ' do
     it 'return Fizz' do
       3.to_fizz_buzz.should  eq 'Fizz'
       6.to_fizz_buzz.should  eq 'Fizz'
@@ -23,7 +22,7 @@ describe Integer do
     end
   end
 
-  context '5の倍数かつ3の倍数でない' do
+  context '5の倍数のみ' do
     it 'return Buzz' do
       5.to_fizz_buzz.should  eq 'Buzz'
       10.to_fizz_buzz.should eq 'Buzz'
