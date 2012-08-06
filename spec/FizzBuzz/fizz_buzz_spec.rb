@@ -1,6 +1,7 @@
 ﻿# -*- encoding: UTF-8 -*-
+
+$LOAD_PATH << File.expand_path('../', File.dirname(__FILE__))
 require 'spec_helper'
-require 'fizz_buzz'
 
 describe Integer do
 
