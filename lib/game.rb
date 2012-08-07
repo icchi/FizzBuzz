@@ -12,13 +12,13 @@ module FizzBuzz
     end
     
     def start
-      @output.puts 'welcome FizzBuzz'
+      @output.puts 'Welcome to FizzBuzz'
       @output.puts 'input number'
       number = @input.gets.to_i
       @output.puts '----------'
 
       for count in 1..number
-        puts count.to_fizz_buzz
+        @output.puts count.to_fizz_buzz
       end
     end
   end
