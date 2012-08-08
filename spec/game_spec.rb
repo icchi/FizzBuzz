@@ -1,22 +1,39 @@
 ﻿# -*- encoding: UTF-8 -*-
-
 require 'stringio'
-
-$LOAD_PATH << File.dirname(__FILE__)
 require 'spec_helper'
 
 module FizzBuzz
   describe Game do
-    let(:input) { StringIO.new('1', 'r') }
     let(:output) { StringIO.new }
-    let(:game) { Game.new(input, output) }
 
-    describe 'Game#start' do
-      context 'with 1' do
-        it 'start' do
-          game.start
+    describe '開始' do
+      context '入力値は1' do
+
+        subject do
+          input = double('input')
+          input.stub(:gets).and_return('1')
+          Game.new(input, output) 
+        end
+
+        before(:each) do
+          subject.start
           output.seek(0)
-          output.read.should eq "Welcome to FizzBuzz\ninput number\n----------\n1\n"
+        end
+
+        it 'ゲーム開始のメッセージが表示される' do
+          output.read.split("\n")[0].should eq 'Welcome to FizzBuzz'
+        end
+
+        it '入力を促すメッセージが表示される' do
+          output.read.split("\n")[1].should eq 'input number'
+        end
+
+        it '区切り文字が表示される' do
+          output.read.split("\n")[2].should eq '----------'
+        end
+
+        it '結果が表示される' do
+          output.read.split("\n")[3].should eq '1'
         end
       end
     end
